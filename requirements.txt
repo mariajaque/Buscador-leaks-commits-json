@@ -1,0 +1,8 @@
+pandas
+GitPython
+re
+signal
+sys
+time
+pwn
+pdb
