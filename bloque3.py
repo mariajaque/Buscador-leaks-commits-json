@@ -1,11 +1,11 @@
-import pandas as pd
-from asyncio.format_helpers import extract_stack
 from git import Repo
-import re,signal,sys,time,pwn,pdb
+import re
+import signal
+import sys
+import time
 import json
-import requests
 
-"""
+
 def handler_signal(signal,frame):
 
     print("\n\n [!] out .......\ n")
@@ -13,7 +13,7 @@ def handler_signal(signal,frame):
     sys.exit(1)
 
 signal.signal(signal.SIGINT,handler_signal)
-"""
+
 
 
 def extract(url):
