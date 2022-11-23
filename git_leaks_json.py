@@ -8,6 +8,9 @@ import json
 
 def handler_signal(signal,frame):
 
+    # Salida controlada del programa en caso de pulsar 
+    # control C
+
     print("\n\n [!] out .......\ n")
 
     sys.exit(1)
@@ -18,12 +21,19 @@ signal.signal(signal.SIGINT,handler_signal)
 
 def extract(url):
 
+    # Se extrae la información del repositorio clonado y se
+    # genera una lista con los commits realizados en dicho repo
+
     repo = Repo(url)
     lista = list(repo.iter_commits())   # Devuelve una lista de objetos
     return lista
 
 
 def transform(lista, palabras):
+
+    # Se buscan las palabras clave en cada uno de los commits
+    # En caso de que se encuentren se almacena en un diccionario
+    # el código del commit y el mensaje
 
     leaks = {}
 
@@ -37,6 +47,10 @@ def transform(lista, palabras):
 
 
 def load(leaks):
+
+    # Se crea el fichero json y se almacena en él todos los leaks
+    # Posteriormente también se muestran los leaks encontrados por
+    # pantalla
 
     with open('leak.json', 'w') as json_file:
         json.dump(leaks, json_file, indent=4)
